@@ -16,7 +16,8 @@ module.exports = {
             loader: 'babel-loader',
             exclude: /node_modules/,// loader not read files from node modules
             query: {
-                presets: ['es2015'] // what preset i wanna apply in project (typescript, react...) 
+                presets: ['es2015'], // what preset i wanna apply in project (typescript, react...) 
+                plugins: ['transform-object-rest-spread'] //plugin for aplication uderstand the operator spread
             }
 
         }]
