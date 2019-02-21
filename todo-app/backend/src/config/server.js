@@ -2,12 +2,13 @@ const PORT = process.env.PORT || 3003;
 
 const express = require('express');
 const bodyParse = require('body-parser');
-const app = express();
-const mongoose = require('mongoose');
+const server = express();
 
-app.use(bodyParse.urlencoded({extended: true}));
-app.use(bodyParse.json());
+server.use(bodyParse.urlencoded({extended: true}));
+server.use(bodyParse.json());
 
-app.listen(PORT, () => {
+server.listen(PORT, () => {
     console.log(`Server runing in port ${PORT}`);
 });
+
+module.exports = server;
