@@ -1,8 +1,7 @@
 export function changeValue(event){
-    console.log('changedValue');
 
     return {
-        type: 'VALUE_CHANGED', //always in return of action creator must be return a object with flag "type" 
-        payload: event.target.value
+        type: 'VALUE_CHANGED', //always in return from action creator must be return a object with flag "type" 
+        payload: event.target.value // payload can be any "flag", (call payload just because mean a return from action dispatcher)
     }
 }

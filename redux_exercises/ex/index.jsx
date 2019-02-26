@@ -4,9 +4,10 @@ import { combineReducers, createStore } from 'redux'; // combinereducer create a
 import { Provider } from 'react-redux'; // Could pass the states for components interns
 
 import Field from './field';
+import fieldReducer from './fieldReducer';
 
 const reducers  = combineReducers({
-    field: () => ({ value: 'Opa2' })
+    field: fieldReducer //field will be update when a dispatch will comes
 })
 
 ReactDOM.render(
