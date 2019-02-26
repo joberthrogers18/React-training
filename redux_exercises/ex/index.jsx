@@ -6,7 +6,7 @@ import { Provider } from 'react-redux'; // Could pass the states for components 
 import Field from './field';
 
 const reducers  = combineReducers({
-    field: () => ({ value: 'Opa' })
+    field: () => ({ value: 'Opa2' })
 })
 
 ReactDOM.render(

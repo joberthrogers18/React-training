@@ -1,29 +1,24 @@
 import React, {Component} from 'react';
+import { connect } from 'react-redux';
 
 class Field extends Component {
-
-    constructor(props){
-        super(props);
-        this.state= {
-            value: props.initialValue
-        }
-
-        this.handleChange = this.handleChange.bind(this); // this is not know where is call and the "this" lost the reference so we change for this point to field component
-    }
-
-    handleChange(event){
-        this.setState({value: event.target.value});
-    }
 
     render(){
         return(
             <div>
-                <label>{this.state.value}</label><br/>
-                <input onChange={this.handleChange} value={this.state.value} ></input>
+                <label>{this.props.value}</label><br/>
+                <input onChange={this.handleChange} value={this.props.value} ></input>
             </div>
         )
     }
 
 }
 
-export default Field;
+function mapStateToProps(state){ //map the attributes in my store to my props component *** it very important in redux
+    return {
+        value: state.field.value //load this value from reducers to props here
+    }
+}
+
+//pattern design call decorator
+export default connect(mapStateToProps)(Field) // connect react part with redux function
