@@ -3,16 +3,16 @@ import ReactDOM from 'react-dom';
 import { combineReducers, createStore } from 'redux'; // combinereducer create a pointer for all states and the amount of this is create a store like a component imutable but who can update
 import { Provider } from 'react-redux'; // Could pass the states for components interns
 
-import counterReducer from './counterReducer';
-import Counter from './counter';
+import Field from './field';
+import fieldReducer from './fieldReducer';
 
 const reducers  = combineReducers({
-    counter: counterReducer //field will be update when a dispatch will comes
+    field: fieldReducer //field will be update when a dispatch will comes
 })
 
 ReactDOM.render(
     <Provider store={createStore(reducers)}>
-        <Counter/>
+        <Field initialValue='Teste' />
     </Provider>
 ,   document.getElementById('app'));
 
