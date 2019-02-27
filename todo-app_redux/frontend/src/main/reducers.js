@@ -3,7 +3,7 @@ import { combineReducers } from 'redux';
 const rootReducer = combineReducers({ //combine all reducers
     todo: () => ({
         description: 'Ler livro',
-        List: [{
+        list: [{
             _id: 1,
             description: 'Pagar fatura do cartão',
             done: true
