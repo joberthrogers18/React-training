@@ -21,8 +21,9 @@ export default (state = INITIAL_STATE, action) => {
         case 'DESCRIPTION CHANGED':
             return {...state, description: action.payload}
         case 'TODO_SEARCHED':
-            console.log(action.payload);
             return {...state, list: action.payload.data}
+        case 'TODO_ADDED':
+            return {...state, description: ''}
         default:
             return state
     }

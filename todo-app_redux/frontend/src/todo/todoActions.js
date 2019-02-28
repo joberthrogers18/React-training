@@ -15,3 +15,12 @@ export const search = () => {
         payload: request
     };
 }
+
+export const add = (description) => {
+
+    return dispatch => { // to send to all reducers and wait for a request assync we need return a method
+        const request = axios.post(URL, {description: description})
+            .then(resp => dispatch({ type: 'TODO_ADDED', payload: resp.data }))
+            .then( resp => dispatch(search())); // description: description, like is the same name we can let { description }
+    }
+}
