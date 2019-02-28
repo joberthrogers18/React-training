@@ -4,7 +4,7 @@ import ButtonIcon from '../template/iconButton';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
-import { changeDescription, search, add } from './todoActions';
+import { changeDescription, search, add, clear } from './todoActions';
 
 class TodoForm extends Component{
 
@@ -19,16 +19,16 @@ class TodoForm extends Component{
     }
 
     keyHandler(e){
-        const { add, description, search } = this.props;
+        const { add, clear, description, search } = this.props;
 
         if(e.key == 'Enter'){
             e.shiftKey ? search() : add(description)
         }else if(e.key == 'Escape'){
-            this.props.handleClear();
+            clear();
         }
     }
     render(){
-        const { add, description, search } = this.props;
+        const { add, clear, description, search } = this.props;
 
         return(
             <div role='form' className="todoForm row mb-2">
@@ -41,8 +41,8 @@ class TodoForm extends Component{
                 </Grid>
                 <Grid cols='12 3 2' >
                     <ButtonIcon style="primary" icon="plus" onClick={() => add(description)} ></ButtonIcon>
-                    <ButtonIcon style="info" icon="search" onClick={() => search()} ></ButtonIcon>
-                    <ButtonIcon style="outline-dark" icon="close" onClick={this.props.handleClear} ></ButtonIcon>
+                    <ButtonIcon style="info" icon="search" onClick={search} ></ButtonIcon>
+                    <ButtonIcon style="outline-dark" icon="close" onClick={clear} ></ButtonIcon>
                 </Grid>
             </div>
         )
@@ -51,6 +51,6 @@ class TodoForm extends Component{
 
 const mapStateToProps = state => ({ description: state.todo.description })
 
-const mapDispatchToProps = dispatch => bindActionCreators({changeDescription, search, add}, dispatch);
+const mapDispatchToProps = dispatch => bindActionCreators({changeDescription, search, add, clear}, dispatch);
 
 export default connect(mapStateToProps, mapDispatchToProps)(TodoForm);
