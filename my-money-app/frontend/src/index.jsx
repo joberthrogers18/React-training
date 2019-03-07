@@ -10,7 +10,9 @@ import multi from 'redux-multi';
 import App from './main/app';
 import reducers from './main/reducers';
 
-const store = applyMiddleware(promise)(createStore)(reducers); //store with middleware
+const devTools = window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+
+const store = applyMiddleware(promise)(createStore)(reducers,devTools); //store with middleware
 
 ReactDOM.render(
     <Provider store={store}>

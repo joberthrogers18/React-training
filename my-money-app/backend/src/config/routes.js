@@ -8,6 +8,6 @@ module.exports = function(server){
 
     //Routes from billing cycle
     const billingCycle = require('../api/billingCycle/billingCycleSevice');
-    billingCycle.register(router, '/biliingCycles'); //register all the webservices restful (get, put, post, delete)
+    billingCycle.register(router, '/billingCycles'); //register all the webservices restful (get, put, post, delete)
  
 }
