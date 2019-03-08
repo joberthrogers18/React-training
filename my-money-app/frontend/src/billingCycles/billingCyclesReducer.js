@@ -1,4 +1,4 @@
-const INTIAL_STATE = {list: {}}
+const INTIAL_STATE = {list: []}
 
 export default (state = INTIAL_STATE, action) => {
     switch(action.type){
