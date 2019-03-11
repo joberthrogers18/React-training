@@ -34,7 +34,4 @@ export function create(values){
             })
     }
 
-    return {
-        type: 'TEMP'
-    }
 }
