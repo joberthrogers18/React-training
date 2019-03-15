@@ -28,6 +28,6 @@ class BillingCyclesForm extends Component{
     }
 
 }
-                        //id of my form
-export default reduxForm({form: 'billingCycleForm'})(BillingCyclesForm);
+                        //id of my form             // No destroy the data in form when it is destroy and could use when the component is instanciate again for another case
+export default reduxForm({form: 'billingCycleForm', destroyOnUnmount: false})(BillingCyclesForm);
 //Decorate the form with redux form
