@@ -4,6 +4,7 @@ import { reset as resetForm, initialize } from 'redux-form'; //reset the form
 import { showTabs, selectTab } from '../common/tab/tabAction';
 
 const BASE_URL = 'http://localhost:3003/api';
+const INITIAL_VALUES = {}
 
 export function getList(){
     const request = axios.get(`${BASE_URL}/billingCycles`);
@@ -22,12 +23,7 @@ export function create(values){
                 toastr.success('Sucesso', 'Operação feita com sucess');
 
                 //the dispatch receive only actions creators, e the array is becaus the redux multi and i can dispatch several actions because that
-                dispatch([
-                    resetForm('billingCycleForm'), //id added in billing cycle forms
-                    getList(),
-                    selectTab('tabList'),
-                    showTabs('tabList', 'tabCreate')
-                ])
+                dispatch(init())
 
             }).catch(e => {
                 e.response.data.errors.forEach(error => toastr.error('Erro', error));
@@ -41,5 +37,14 @@ export function showUpdate(billingCycle){
         showTabs('tabUpdate'),
         selectTab('tabUpdate'),
         initialize('billingCycleForm', billingCycle) // the values that i will put in form
+    ]
+}
+
+export function init() {
+    return [
+        showTabs('tabList', 'tabCreate'),
+        selectTab('tabList'),
+        getList(),
+        initialize('billingCycleForm', INITIAL_VALUES)
     ]
 }
