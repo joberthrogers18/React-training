@@ -23,6 +23,10 @@ export function update(values){
     return submit(values, 'put')
 }
 
+export function remove(values){
+    return submit(values, 'delete')
+}
+
 function submit(values, methods){
     return dispatch => {
         
@@ -30,7 +34,7 @@ function submit(values, methods){
 
         axios[methods](`${BASE_URL}/billingCycles/${id}`, values) // in javascript the notation axios[method] is the same of axios.post or axios.put
             .then(resp => {
-                toastr.success('Sucesso', 'Operação feita com sucess');
+                toastr.success('Sucesso', 'Operação feita com sucesso');
 
                 //the dispatch receive only actions creators, e the array is becaus the redux multi and i can dispatch several actions because that
                 dispatch(init())
@@ -41,11 +45,22 @@ function submit(values, methods){
     }
 }
 
+
 export function showUpdate(billingCycle){
     return [
         showTabs('tabUpdate'),
         selectTab('tabUpdate'),
         initialize('billingCycleForm', billingCycle) // the values that i will put in form
+    ]
+}
+
+// The function above and down here are duplicate, after we have to refactory
+
+export function showDelete(billingCycle){
+    return [
+        showTabs('tabDelete'),
+        selectTab('tabDelete'),
+        initialize('billingCycleForm', billingCycle)
     ]
 }
 

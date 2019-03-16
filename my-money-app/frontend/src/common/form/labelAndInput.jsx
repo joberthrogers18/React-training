@@ -8,6 +8,7 @@ export default props => (
             <input {...props.input} className='form-control'    
                     placeholder={props.placeholder}
                     readOnly={props.readOnly} type={props.type} /> {/* This spead is the properies pass by the Field render in dedux form */}
+                    {/* The read only is come from the form field */}
         </div>
     </Grid>
 )

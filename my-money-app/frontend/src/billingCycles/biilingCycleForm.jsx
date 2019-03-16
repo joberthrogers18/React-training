@@ -11,22 +11,24 @@ import { init } from './billingCyclesAction';
 class BillingCyclesForm extends Component{
 
     render(){
-        const { handleSubmit } = this.props //method avaiable when we use the redux form
+        const { handleSubmit, readOnly } = this.props //the method "handleSubmit" is avaiable when we use the redux form
 
         return(
             <form role='form' onSubmit={handleSubmit}>
                 <div className='box-body'>
-                    <Field name='name' component={labelAndInput} 
+                    <Field name='name' component={labelAndInput} readOnly={readOnly} //the readOnly go to the component labelAndInput 
                         label='Nome'cols='12 4' placeholder='Informe o nome'/> {/* The parameters pass here will got to props in component "labelAndInput" */}
 
-                    <Field name='month' component={labelAndInput} type='number'
+                    <Field name='month' component={labelAndInput} type='number' readOnly={readOnly}
                         label='Mês' cols='12 4' placeholder='Informe o mês'/> {/* The parameters pass here will got to props in component "labelAndInput" */}
 
-                    <Field name='year' component={labelAndInput} type='number'
+                    <Field name='year' component={labelAndInput} type='number' readOnly={readOnly}
                         label='ano' cols='12 4' placeholder='Informe o ano'/> {/* The parameters pass here will got to props in component "labelAndInput" */}
                 </div>
                 <div className='box-footer'>
-                    <button type='submit' className='btn btn-primary spacing-button'>Submit</button>
+                    <button type='submit' className={`btn btn-${this.props.submitClass}`}>
+                        {this.props.submitLabel}
+                    </button>
                     <button type='button' className='btn btn-default' onClick={this.props.init} >Cancelar</button>
                 </div>
             </form>
