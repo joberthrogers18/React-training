@@ -16,9 +16,19 @@ export function getList(){
 }
 
 export function create(values){
+    return submit(values, 'post')
+}
 
+export function update(values){
+    return submit(values, 'put')
+}
+
+function submit(values, methods){
     return dispatch => {
-        axios.post(`${BASE_URL}/billingCycles`, values)
+        
+        const id = values._id ? values._id : ''; // if there is an id means that the element already exist, if isn't the method is post and we put in id a value ''(empty)
+
+        axios[methods](`${BASE_URL}/billingCycles/${id}`, values) // in javascript the notation axios[method] is the same of axios.post or axios.put
             .then(resp => {
                 toastr.success('Sucesso', 'Operação feita com sucess');
 
@@ -29,7 +39,6 @@ export function create(values){
                 e.response.data.errors.forEach(error => toastr.error('Erro', error));
             })
     }
-
 }
 
 export function showUpdate(billingCycle){
