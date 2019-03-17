@@ -7,11 +7,22 @@ import {connect} from 'react-redux';
 import LabelAndInput from '../common/form/labelAndInput';
 import { init } from './billingCyclesAction';
 import ItemList from './itemList'
+import Summary from './summary';
 
 class BillingCyclesForm extends Component{
 
+    calculateSummary(){
+        const sum = (total, actualValue) => total + actualValue;
+
+        return {
+            sumOfCredits: this.props.credits.map(c => +c.value || 0).reduce(sum), //map and reduce are functions from javascript    
+            sumOfDebts: this.props.debts.map(d => +d.value || 0).reduce(sum)
+        }
+    }
+
     render(){
-        const { handleSubmit, readOnly, credits } = this.props //the method "handleSubmit" is avaiable when we use the redux form
+        const { handleSubmit, readOnly, credits, debts } = this.props //the method "handleSubmit" is avaiable when we use the redux form
+        const {sumOfCredits, sumOfDebts } = this.calculateSummary()
 
         return(
             <form role='form' onSubmit={handleSubmit}>
@@ -25,8 +36,12 @@ class BillingCyclesForm extends Component{
                     <Field name='year' component={LabelAndInput} type='number' readOnly={readOnly}
                         label='ano' cols='12 4' placeholder='Informe o ano'/> {/* The parameters pass here will got to props in component "LabelAndInput" */}
                 
+                    <Summary credit={sumOfCredits} debt={sumOfDebts}/>
+
                     <ItemList cols='12 6' list={credits} readOnly={readOnly}
                         field='credits' legend='Créditos'/>
+                    <ItemList cols='12 6' list={debts} readOnly={readOnly}
+                        field='debts' legend='Débitos' showStatus={true}/>
                 </div>
                 <div className='box-footer'>
                     <button type='submit' className={`btn btn-${this.props.submitClass}`}>
@@ -46,7 +61,10 @@ BillingCyclesForm = reduxForm({form: 'billingCycleForm', destroyOnUnmount: false
 
 const selector = formValueSelector('billingCycleForm') //take the value data saved in state controlled in redux form and throw to props in this component
 
-const mapStateToProps = state => ({credits: selector(state, 'credits')}) // take the list of credits using the selector to take in state controled by redux form
+const mapStateToProps = state => ({
+                credits: selector(state, 'credits'),
+                debts: selector(state, 'debts')
+}) // take the list of credits and debts using the selector to take in state controled by redux form
 
 const mapDispatchToProps = dispatch => bindActionCreators({init}, dispatch);
 
