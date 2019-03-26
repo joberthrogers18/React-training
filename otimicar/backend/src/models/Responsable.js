@@ -22,8 +22,8 @@ const ResponsableSchema = Schema({
     },
     telefone: {
         type: String,
-        minLength: 8,
-        maxLength: 8,
+        minLength: 9,
+        maxLength: 9,
         required: true
     }
 });
