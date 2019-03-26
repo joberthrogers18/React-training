@@ -10,7 +10,7 @@ app.use(bodyParser.urlencoded({extended: true}));
 
 app.use(bodyParser.json());
 
-app.use(Routes);
+app.use('/', Routes);
 
 app.listen(PORT, () => {
     console.log(`The serve is avaiable in port ${PORT}`);

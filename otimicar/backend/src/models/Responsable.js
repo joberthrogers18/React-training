@@ -6,7 +6,7 @@ const ResponsableSchema = Schema({
         type: String,
         unique: true
     },
-    nome: {
+    name: {
         type: String,
         required: true
     },
@@ -16,11 +16,11 @@ const ResponsableSchema = Schema({
         maxLength: 8,
         required: true
     },
-    logradouro: {
+    address: {
         type: String,
         required: true
     },
-    telefone: {
+    phone: {
         type: String,
         minLength: 9,
         maxLength: 9,
@@ -28,4 +28,4 @@ const ResponsableSchema = Schema({
     }
 });
 
-exports.modules = mongoose.model('responsabel', ResponsableSchema);
+exports.modules = mongoose.model('responsable', ResponsableSchema);
