@@ -1,7 +1,10 @@
 import { createStore } from 'redux';
 
 function reducer (){
-    return [
+    return {
+        activeLesson: {},
+        activeModule: {},
+        modules: [
             {
               id: 1,
               title: 'Iniciando com react',
@@ -19,7 +22,8 @@ function reducer (){
               ]
       
             }
-    ];
+        ]
+    }
 }
 
 const store = createStore(reducer);

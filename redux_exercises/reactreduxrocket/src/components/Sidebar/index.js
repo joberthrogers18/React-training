@@ -4,7 +4,15 @@ import { connect } from 'react-redux';
 
 // import { Container } from './styles';
 
-const Sidebar = ({modules}) => (
+const toggleLesson = (module, lesson) => {
+    return {
+      type: 'TOGGLE_LESSON',
+      module: module,
+      lesson: lesson
+    };
+}
+
+const Sidebar = ({modules, dispatch}) => (
   <aside>
     {modules.map( module => (
       <div key={module.id}>
@@ -13,6 +21,7 @@ const Sidebar = ({modules}) => (
             { module.lessons.map(lesson => (
                 <li key={lesson.id}>
                     {lesson.title}
+                    <button onClick={() => dispatch(toggleLesson(module, lesson))}>Selecionar</button>
                 </li>
             ))}
         </ul>
@@ -22,7 +31,7 @@ const Sidebar = ({modules}) => (
 );
 
 const mapStateToProps = state => ({
-    modules: state
+    modules: state.modules
 });
 
 
