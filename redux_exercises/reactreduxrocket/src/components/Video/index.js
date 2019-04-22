@@ -3,15 +3,12 @@ import React, { Component } from 'react';
 // import { Container } from './styles';
 
 export default class Video extends Component {
-  state = {
-      modules: [
-          {id: 1, title: 'Iniciando com react', lessons: [
-              
-          ]}
-      ]
-  };
-
   render() {
-    return <div />;
+    return (
+        <div>
+            <strong>Módulo X</strong>
+            <span>Aula X</span>
+        </div>
+    );
   }
 }

@@ -1,12 +1,19 @@
 import React, { Component } from 'react';
-import Sidebar from './components/Sidebar/index'
+import Sidebar from './components/Sidebar/index'   
+import Video from './components/Video/index'
+import { Provider } from 'react-redux';
 
+import store from './store/index';
 
 class App extends Component {
+
   render() {
     return (
       <div className="App">
-        <Sidebar></Sidebar>
+        <Provider store={store}>
+          <Video />
+          <Sidebar />
+        </Provider>
       </div>
     );
   }
