@@ -12,6 +12,7 @@ const ResponsableSchema = new Schema({
   },
   cpf: {
     type: String,
+    unique: true,
     required: true
   },
   cnh: {
@@ -23,6 +24,8 @@ const ResponsableSchema = new Schema({
     ref: 'vehicles'
   }]
 
+}, {
+  timestamps: true
 });
 
 module.exports = model('responsables', ResponsableSchema);

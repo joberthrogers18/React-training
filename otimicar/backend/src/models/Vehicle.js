@@ -20,6 +20,7 @@ const VehicleSchema = new Schema({
   },
   renavam: {
     type: String,
+    unique: true,
     required: true
   }
 
