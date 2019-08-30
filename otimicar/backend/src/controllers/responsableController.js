@@ -7,7 +7,7 @@ module.exports = {
     try {
       var responsables = await Responsable.find().populate('vehicles');
     } catch (error) {
-      return res.json(error);
+      return res.json({ "msg": `Erro ao buscar: ${error}`});
     }
     
     res.json(responsables);
@@ -26,7 +26,7 @@ module.exports = {
         vehicles
       });
     } catch (error) {
-      return res.json(error);
+      return res.json({ "msg": `Erro ao salvar: ${error}`});
     }
 
     res.json(responsable);
@@ -38,7 +38,7 @@ module.exports = {
     try {
       var responsable = await Responsable.findById(req.params.id).populate('vehicles');
     } catch (error) {
-      return res.json(error);
+      return res.json({ "msg": `Erro ao buscar: ${error}`});
     }
     
     res.json(responsable);
@@ -50,7 +50,7 @@ module.exports = {
     try {
       var responsables = await Responsable.find(req.body.id).populate('vehicles');
     } catch (error) {
-      return res.json(error);
+      return res.json({ "msg": `Erro ao buscar: ${error}`});
     }
 
     res.json(responsables[0]["vehicles"]);
@@ -64,7 +64,7 @@ module.exports = {
     try {
       await Responsable.findByIdAndRemove(id);
     } catch (error) {
-      return res.json(error);
+      return res.json({ "msg": `Erro ao deletar: ${error}`});
     }
 
     res.json({"success": "Remoção feita com sucesso"});
@@ -78,7 +78,7 @@ module.exports = {
     try{
       await Responsable.findByIdAndUpdate(id, req.body);
     } catch (error){
-      return res.json(error);
+      return res.json({ "msg": `Erro ao atualizar: ${error}`});
     }
 
     res.json({"success": "Atualizado com sucesso"});
