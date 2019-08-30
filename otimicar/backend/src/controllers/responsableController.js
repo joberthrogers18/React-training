@@ -45,16 +45,43 @@ module.exports = {
 
   },
 
-  // async filterAllVehicles (req, res) {
+  async filterAllVehicles (req, res) {
 
-  //   try {
-  //     var responsables = await Responsable.find();
-  //   } catch (error) {
-  //     return res.json(error);
-  //   }
-    
-  //   res.json(responsables);
+    try {
+      var responsables = await Responsable.find(req.body.id).populate('vehicles');
+    } catch (error) {
+      return res.json(error);
+    }
 
-  // }
+    res.json(responsables[0]["vehicles"]);
+
+  },
+
+  async deleteResponsable (req, res) {
+
+    const { id } = req.params; 
+
+    try {
+      await Responsable.findByIdAndRemove(id);
+    } catch (error) {
+      return res.json(error);
+    }
+
+    res.json({"success": "Remoção feita com sucesso"});
+
+  },
+
+  async updateResponsable (req, res) {
+
+    const { id } = req.params;
+
+    try{
+      await Responsable.findByIdAndUpdate(id, req.body);
+    } catch (error){
+      return res.json(error);
+    }
+
+    res.json({"success": "Atualizado com sucesso"});
+  }
 
 }
