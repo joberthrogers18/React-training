@@ -1,3 +1,7 @@
 import { combineReducers } from 'redux';
 
-export default combineReducers();
+import ResponsableReducer from '../../components/Show/showReducer';
+
+export default combineReducers({
+  responsable: ResponsableReducer,
+});

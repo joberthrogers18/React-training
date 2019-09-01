@@ -1,5 +1,5 @@
-import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
+import React, {Component} from 'react';
+//import { makeStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
@@ -7,42 +7,28 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 
+import { fetchAllResponsables } from './showActions';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+
 import './styles.css';
 
-const useStyles = makeStyles(theme => ({
-  root: {
-    width: '80%',
-    marginTop: theme.spacing(5),
-    overflowX: 'auto',
-  },
-  table: {
-    minWidth: 650,
-  },
-}));
+class Show extends Component{
 
-function createData(name, cpf, age, cnh) {
-  return { name, cpf, age, cnh };
-}
+  componentDidMount(){
+    this.props.fetchAllResponsables();
+  }
 
-const rows = [
-  createData('Frozen yoghurt', 159, 6.0, 24, 4.0),
-  createData('Ice cream sandwich', 237, 9.0, 37, 4.3),
-  createData('Eclair', 262, 16.0, 24, 6.0),
-  createData('Cupcake', 305, 3.7, 67, 4.3),
-  createData('Gingerbread', 356, 16.0, 49, 3.9),
-];
 
-const Show = () =>{
-
-  const classes = useStyles();
+  render (){
 
     return (
         <div className="list">
           <header className="title">
             <h1>Responsáveis</h1>
           </header> 
-          <Paper className={classes.root}>
-            <Table className={classes.table}>
+          <Paper >
+            <Table >
               <TableHead>
                 <TableRow>
                   <TableCell>CPF</TableCell>
@@ -52,8 +38,8 @@ const Show = () =>{
                 </TableRow>
               </TableHead>
               <TableBody>
-                {rows.map(row => (
-                  <TableRow key={row.name}>
+                {this.props.responsable.map(row => (
+                  <TableRow key={row._id}>
                     <TableCell component="th" scope="row">
                       {row.cpf}
                     </TableCell>
@@ -67,6 +53,18 @@ const Show = () =>{
           </Paper>
         </div>
     );
+  }
+  
 }
 
-export default Show;
+const mapStateToProps = state => {
+  return {
+    responsable: state.responsable.resp
+  }
+}
+
+const mapDispatchToProps = dispatch => {
+  return bindActionCreators({fetchAllResponsables}, dispatch);
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Show);
