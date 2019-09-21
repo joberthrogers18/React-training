@@ -17,7 +17,7 @@ function Content(){
           </div>
         </li>
         <li>
-          <div className="number">1</div>
+          <div className="number">2</div>
           <div className="content">
             <p className="title">Lading Page 101</p>
             <p className="explain">The values are a space separated list
@@ -25,7 +25,7 @@ function Content(){
           </div>
         </li>
         <li>
-          <div className="number">1</div>
+          <div className="number">3</div>
           <div className="content">
             <p className="title">Lading Page 101</p>
             <p className="explain">The values are a space separated list
@@ -33,7 +33,7 @@ function Content(){
           </div>
         </li>
         <li>
-          <div className="number">1</div>
+          <div className="number">4</div>
           <div className="content">
             <p className="title">Lading Page 101</p>
             <p className="explain">The values are a space separated list
