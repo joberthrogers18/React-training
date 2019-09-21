@@ -1,0 +1,67 @@
+.login  {
+  height: 90vh;
+  display: flex;
+  justify-content:  center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.box {
+  border: 2px solid #999;
+  padding: 100px;
+  background-color: #FFF;
+  border: none;
+  border-radius: 50px;
+  width: 30%;
+  -webkit-box-shadow: 13px 11px 45px 0px rgba(0,0,0,0.75);
+  -moz-box-shadow: 13px 11px 45px 0px rgba(0,0,0,0.75);
+  box-shadow: 13px 11px 45px 0px rgba(0,0,0,0.75);
+}
+
+.box p {
+  font-size: 50px;
+  font-weight: bold;
+  color: #007b80;
+  margin-bottom: 50px;
+  background-color: #FFF;
+}
+
+.sign-up {
+  display: flex;
+  flex-direction: column;
+  background-color: #FFF;
+  margin-bottom: 35px;
+}
+
+.sign-up > input {
+  background-color: #EFEFEF;
+  border: none;
+  border-radius: 20px;
+  margin-bottom: 20px;
+  width: 100%;
+  height: 50px;
+  padding-left: 15px;
+  font-size: 20px;
+}
+
+.sign-up > input::placeholder {
+  padding-left: 15px;
+}
+
+.footer {
+  background-color: #FFF;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.submit {
+  background-color:#007b80;
+  width: 250px;
+  height: 50px;
+  color: #FFF;
+  font-weight: bold;
+  font-size: 20px;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+}
