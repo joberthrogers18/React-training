@@ -13,7 +13,7 @@
   border: none;
   border-radius: 50px;
   width: 30%;
-  -webkit-box-shadow: 13px 11px 45px 0px rgba(0,0,0,0.75);
+  -webkit-box-shadow: 13px 11px 45px 0px rgba(0, 0, 0, 0.75);
   -moz-box-shadow: 13px 11px 45px 0px rgba(0,0,0,0.75);
   box-shadow: 13px 11px 45px 0px rgba(0,0,0,0.75);
 }
@@ -48,6 +48,10 @@
   padding-left: 15px;
 }
 
+.sign-up > input:hover {
+  background-color: rgb(216, 214, 214);
+}
+
 .footer {
   background-color: #FFF;
   display: flex;
@@ -64,4 +68,8 @@
   border: none;
   border-radius: 30px;
   cursor: pointer;
+}
+
+.submit:hover {
+  background-color:#03a5aa;  
 }
