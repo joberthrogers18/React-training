@@ -1,0 +1,15 @@
+.list-ground {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.list-inside {
+  border: none;
+  border-radius: 10px;
+  background-color: #0ba0a5;
+  width: 90%;
+  height: 90vh;
+  margin-top: 20px;
+  padding: 10px;
+}
