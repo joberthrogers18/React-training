@@ -14,7 +14,7 @@ export default function App() {
     errorMessage: null,
   };
 
-  const [location, setLocation] = useState('');
+  const [location, setLocation] = useState({});
   const [errorMessage, setError] = useState('');
 
 
@@ -24,24 +24,32 @@ export default function App() {
       setError('Permission to access location was denied');
     }
 
-    let location = await Location.getCurrentPositionAsync({});
+    let location = await Location.getCurrentPositionAsync();
     return location;
   };
 
-  useEffect(async () => {
+  useEffect(() => {
 
-    if (Platform.OS === 'android' && !Constants.isDevice) {
-      setError('Oops, this will not work on Sketch in an Android emulator. Try it on your device!');
-    } else {
-      const response = await this._getLocationAsync();
-      console.log(response);
+    async function handleActivites() {
+      if (Platform.OS === 'android' && !Constants.isDevice) {
+        setError('Oops, this will not work on Sketch in an Android emulator. Try it on your device!');
+      } else {
+        const response = await this._getLocationAsync();
+        console.log(response.coords);
+        setLocation(response.coords);
+      }
     }
+
+    handleActivites();
 
   }, []);
 
   return (
     <View style={styles.container}>
-      <MapView style={styles.mapStyle} />
+      <MapView style={styles.mapStyle}> 
+        <Text >{location.longitude}</Text>
+        <Text >{location.latitude}</Text>
+      </MapView>
     </View>
   );
 }
